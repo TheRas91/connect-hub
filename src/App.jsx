@@ -4,22 +4,26 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header />
-        <main className="p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="flex">
+      <Router>
+        <Sidebar />
+        <div className="flex-1 ml-32">
+          <Header />
+          <main className="p-4 mb-4">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </div>
   );
 }
 export default App;

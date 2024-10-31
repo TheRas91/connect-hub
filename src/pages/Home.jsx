@@ -25,7 +25,9 @@ const Home = () => {
           value={newPostContent}
           className="border p-2 mb-2 w-full rounded"
         />
-        <button className="bg-blue-500 p-2  text-white  rounded">Post</button>
+        <button className="bg-blue-500 p-2  text-white  rounded  px-6">
+          Post
+        </button>
       </form>
       {posts.map((post) => (
         <Post key={post.id} content={post.content} />

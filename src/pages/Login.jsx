@@ -22,9 +22,12 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           type="text"
-          className="border p-2 mb-2"
+          className="border p-2 mb-2 rounded"
         />
-        <button type="submit" className="bg-blue-500 text-white p-2">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white p-2 rounded ml-2"
+        >
           Login
         </button>
       </form>
