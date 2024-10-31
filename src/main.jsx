@@ -4,11 +4,14 @@ import App from "./App";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
 ("react-router-dom");
+import { PostsProvider } from "./context/PostsContexts";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <App />
+      <PostsProvider>
+        <App />
+      </PostsProvider>
     </AuthProvider>
   </StrictMode>
 );
