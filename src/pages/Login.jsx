@@ -9,7 +9,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username });
+    login({ username: username });
     navigate("/profile");
   };
 

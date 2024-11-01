@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white   w-full fixed bottom-0">
-      <p> &copy; 2024 Connect Hub. All rights reserved. </p>
+    <footer className="bg-gray-800 text-white p-4 text-center mt-4">
+      <p className="text-sm"> &copy; 2024 Connect Hub. All rights reserved. </p>
     </footer>
   );
 };

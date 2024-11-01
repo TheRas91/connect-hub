@@ -8,12 +8,15 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
+    // <div className="flex-1 ml-64 pt-16">
+
+    // </div>
     <div className="flex">
       <Router>
         <Sidebar />
-        <div className="flex-1 ml-32">
+        <div className="flex-1 ml-32 pt-16">
           <Header />
-          <main className="p-4 mb-4">
+          <main className="p-4 mb-4 min-h-screen">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
