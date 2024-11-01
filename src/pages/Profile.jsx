@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user, userProfile, updateUserProfile } = useAuth();
   const [editing, setEditing] = useState(false);
   const [profileData, setProfileData] = useState(userProfile);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate("/login");
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

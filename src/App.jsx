@@ -8,9 +8,6 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    // <div className="flex-1 ml-64 pt-16">
-
-    // </div>
     <div className="flex">
       <Router>
         <Sidebar />

@@ -3,30 +3,56 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username: username });
-    navigate("/profile");
+    if (username === "user" && password === "pass") {
+      login({ username: username });
+      navigate("/profile");
+    } else {
+      setError("Invalid credentials! try 'user' and 'pass' instead");
+    }
   };
 
   return (
-    <div>
-      <h2 className="text-2xl mb-4">Login</h2>
+    <div className="p-8 max-w-md mx-auto">
+      <h2 className="text-3xl font-bold mb-6">Login</h2>
+      {error && (
+        <p className="text-red-500 mb-4 p-2 border rounded ">{error}</p>
+      )}
       <form onSubmit={handleSubmit}>
-        <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          type="text"
-          className="border p-2 mb-2 rounded"
-        />
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-gray-700">
+            Username
+          </label>
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type="text"
+            className="border p-2 mb-2 rounded-md w-full"
+            id="username"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-gray-700">
+            Password
+          </label>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            className="border p-2 mb-2 rounded-md w-full"
+            id="password"
+          />
+        </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded ml-2"
+          className="bg-blue-500 text-white p-2 px-6 rounded ml-2 rounded-md shadow hover:bg-blue-600"
         >
           Login
         </button>
