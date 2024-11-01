@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Post from "../components/Post";
 import { usePosts } from "../context/PostsContexts";
+import { useNotifications } from "../context/NotificationsContext";
 
 const Home = () => {
   const [newPostContent, setNewPostContent] = useState("");
   const { posts, addPost } = usePosts();
+  const { addNotification } = useNotifications();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ const Home = () => {
     if (!newPostContent.trim()) return;
     addPost(newPostContent);
     setNewPostContent("");
+    addNotification("Post created successfully!");
   };
 
   return (

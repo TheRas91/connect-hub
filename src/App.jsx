@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
+import Notifications from "./components/Notifications";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Sidebar />
         <div className="flex-1 ml-32 pt-16">
+          <Notifications />
           <Header />
           <main className="p-4 mb-4 min-h-screen">
             <Routes>

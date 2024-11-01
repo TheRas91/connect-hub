@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useNotifications } from "../context/NotificationsContext";
 
 const Login = () => {
   const { login } = useAuth();
+  const { addNotification } = useNotifications();
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +15,7 @@ const Login = () => {
     e.preventDefault();
     if (username === "user" && password === "pass") {
       login({ username: username });
+      addNotification("You logged in successfully! ");
       navigate("/profile");
     } else {
       setError("Invalid credentials! try 'user' and 'pass' instead");

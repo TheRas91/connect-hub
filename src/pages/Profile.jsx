@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useNotifications } from "../context/NotificationsContext";
 
 const Profile = () => {
   const { user, userProfile, updateUserProfile } = useAuth();
   const [editing, setEditing] = useState(false);
   const [profileData, setProfileData] = useState(userProfile);
   const navigate = useNavigate();
+  const { addNotification } = useNotifications();
 
   useEffect(() => {
     if (!user) navigate("/login");
@@ -18,8 +20,11 @@ const Profile = () => {
   };
   const handleEditToggle = (e) => {
     e.preventDefault();
-    setEditing((editing) => !editing);
-    if (editing) updateUserProfile(profileData);
+    setEditing(!editing);
+    if (editing) {
+      updateUserProfile(profileData);
+      addNotification("Updated successfully!");
+    }
   };
 
   return (
@@ -79,11 +84,11 @@ const Profile = () => {
 
       <button
         onClick={handleEditToggle}
-        className={`bg-${
-          editing ? "green" : "blue"
-        }-500 text-white py-2 px-6 rounded-md shadow mt-4 hover:bg-${
-          editing ? "green" : "blue"
-        }-600`}
+        className={`${
+          editing ? "bg-green-500" : "bg-blue-500"
+        } text-white py-2 px-6 rounded-md shadow mt-4 hover:${
+          editing ? "bg-green-600" : "bg-blue-600"
+        }`}
       >
         {editing ? "Save" : "Edit"}
       </button>

@@ -5,12 +5,15 @@ import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
 ("react-router-dom");
 import { PostsProvider } from "./context/PostsContexts";
+import { NotificationsProvider } from "./context/NotificationsContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <PostsProvider>
-        <App />
+        <NotificationsProvider>
+          <App />
+        </NotificationsProvider>
       </PostsProvider>
     </AuthProvider>
   </StrictMode>
